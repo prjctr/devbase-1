@@ -1,0 +1,16 @@
+program prog6;
+var
+A: integer;
+Begin
+writeln('Enter number');
+readln(A);
+ if (A mod 2)=0 then
+	writeln ('even')
+else 
+	writeln ('uneven');
+ if (A mod 10)=0 then 
+ 	writeln ('round')
+ else 
+ 	writeln ('not round');
+readln();
+end.

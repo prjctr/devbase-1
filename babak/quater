@@ -1,0 +1,20 @@
+program quater;
+var
+month: integer;
+Begin
+writeln('Enter month');
+readln(month);
+case month of
+ 	1,2,3:
+ 	 	writeln ('The first quater');
+ 	4,5,6:
+ 	 	writeln ('The second quater');
+	7,8,9:	
+		writeln ('The third quater');
+	10,11,12:
+		writeln ('The fourth quater')
+else
+	writeln ('Invalid month');
+end;
+readln();
+end.
