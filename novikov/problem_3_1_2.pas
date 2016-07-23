@@ -64,6 +64,6 @@ begin
 			writeln('Invalid data');
 	end;
 
-	writeln('result is ', result:0:2);
+	writeln('The result is ', result:0:2);
 	readln();
 end.
