@@ -1,4 +1,4 @@
-program best_wishes;
+program 4.1;
 uses CRT;
 	var
 	i:integer;
