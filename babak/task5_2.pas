@@ -2,9 +2,9 @@ program task5_2;
 var
 i:integer;
 n:integer;
-a:integer;
-b:integer;
-c:integer;
+a:longInt;
+b:longInt;
+c:longInt;
 begin
 	writeln ('Enter n');
 	readln (n);
