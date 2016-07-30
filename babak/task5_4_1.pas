@@ -25,6 +25,6 @@ begin
 	until a=0;
 	writeln ('Min value is ', min);
 	writeln ('Max value is ', max);
-	writeln ('Average value is ', avr);
+	writeln ('Average value is ', avr:0:2);
 	readln();
 end.
