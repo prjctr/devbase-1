@@ -28,9 +28,11 @@ begin
 	readln();
 	clrscr;
 	
+	randomize();
 	while not keypressed do
 	begin
-		writeln('lalala');
+		i:= random(67);
+		writeln('lalala ', i);
 		delay(500);		
 	end;
 
