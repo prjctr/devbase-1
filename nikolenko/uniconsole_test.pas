@@ -29,6 +29,7 @@ begin
 	clrscr;
 	
 	randomize();
+	writeln('Нажмите любую клавишу чтобы остановить');
 	while not keypressed do
 	begin
 		i:= random(67);
