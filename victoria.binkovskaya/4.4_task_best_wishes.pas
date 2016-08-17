@@ -3,17 +3,24 @@ uses crt;
 
 var
 	i: Integer;
-	// NewColor: Integer;
+	NewColor: Integer;
 	indent: String;
 
 begin
 	indent := ' ';
-	for i := 1 to 48 do	
+	for i := 0 to 48 do	
 	begin
-		textcolor(((i - 1) div 3) + 1);
+		NewColor := i div 3;
+
+		if (NewColor = 0) then
+			NewColor := 7;
+
+		textcolor(NewColor);
+
+		
 		// ______________or____________
-		// NewColor := ((i - 1) div 3) + 1;
-		// textcolor(NewColor);
+		//textcolor((i div 3) + 1);
+
 
 			// _____________test___________
 			// NewColor := (i - 1) div 3;
