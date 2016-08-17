@@ -15,25 +15,21 @@ begin
 			begin
 				writeln(x);
 			end
-
-		else 
-			if (x > z) then
+			else 
 			begin
 				writeln(z);
 			end;
 		end	
 		else
 		begin
-			if (x > y) then
-				if (y < z) then
-				begin
-					writeln(y);	
-				end	
+			if (y < z) then
+			begin
+				writeln(y);	
+			end	
 			else 
-				if (y > z) then
-				begin
-					writeln(z);
-				end;
+			begin
+				writeln(z);
+			end;
 		end;		
 	end;		
 	readln();	

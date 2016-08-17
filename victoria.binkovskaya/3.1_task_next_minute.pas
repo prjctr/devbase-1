@@ -29,7 +29,6 @@ begin
 				// this code is executed when is NOT m <= 58
 				// this code is executed when h <=22
 				h := h + 1;
-				m := 0;
 			end
 
 			else
@@ -37,10 +36,9 @@ begin
 				// this code is executed when is NOT m <= 58
 				// this code is executed when is NOT h <=22
 				h := 0;
-				m := 0;
 			end;
+			m := 0;
 		end;
-
 			writeln (h:02,':',m:02);
 	end;		
 	readln();	

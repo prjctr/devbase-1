@@ -7,28 +7,27 @@ begin
 	writeln('Enter any 3 numbers');
 	readln(x, y, z);
 
-	if (x > y) then 
+	if (x > y) then
 	begin 
 		if (x > z) then
+		begin
 			writeln(x);
-	end
-
-	else 
-	begin
-		if (x < z) then
+		end
+		else 
+		begin
 			writeln(z);
-	end;
-
-	if (x < y) then
+		end;
+	end	
+	else
 	begin
 		if (y > z) then
+		begin
 			writeln(y);	
-	end
-	else 
-	begin
-		if (y < z) then
+		end
+		else 
+		begin
 			writeln(z);
-	end;
-
+		end;
+	end;	
 	readln();	
 end.
