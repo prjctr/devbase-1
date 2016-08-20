@@ -17,7 +17,6 @@ begin
 
 		textcolor(NewColor);
 
-		
 		// ______________or____________
 		//textcolor((i div 3) + 1);
 
