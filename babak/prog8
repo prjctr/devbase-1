@@ -1,0 +1,20 @@
+program prog8;
+var
+X: integer;
+Y: integer;
+Z: integer;
+Begin
+writeln('Enter  tree numbers');
+readln(X,Y,Z);
+ if (X>Y) then
+ 	if (X>Z) then
+	 	writeln (X, '- the biggest')
+	else 
+		writeln (Z, '-the biggest')
+else
+ 	if (Y>Z) then
+		writeln(Y, '- the biggest')
+ 	else
+ 		writeln (Z, '- the biggest');
+ readln();
+end.

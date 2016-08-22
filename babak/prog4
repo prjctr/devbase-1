@@ -1,0 +1,35 @@
+program prog4;
+var 
+  date: integer;
+  month: integer;
+Begin
+writeln('Enter date and month');
+readln( date, month);
+	Begin
+		if (month > 2) and (month < 11) and (date < 31) then
+			begin
+			writeln (date+1 , month);	
+			end
+			else 
+			begin
+			writeln (date=1, month+1);
+			end;
+		if (month=2) and (date<28) then
+		 	begin
+		 	writeln (date+1, month);	
+		 	end
+			else 
+			begin
+			writeln (date=1, month+1);
+			end;
+		if (month =2) and (date >28) then 
+			begin
+			writeln('wrong date');
+			end;
+		if (month > 2) and (month < 11) and (date > 31) then
+			begin
+			writeln ('wrong date')
+			end;
+	end;
+readln();
+end.

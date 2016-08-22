@@ -1,0 +1,57 @@
+program 3.1.2;
+	var
+		operation: integer;
+		a: integer;
+		b: integer;
+			begin
+				writeln('Avalible operations');
+				writeln('1:a+b');
+				writeln('2:a-b');
+				writeln('3:a*b');
+				writeln('4:a div b');
+				writeln('5:a mod b');
+				writeln('6:a ^ 2');
+				writeln ('Enter operation number');
+				readln(operation);
+			case operation of
+			 	1:
+			 	 	begin 
+			 	 	writeln ('Enter operands');
+					readln (a,b);
+					writeln ('Result is ',a+b);
+					end;
+			 	2:
+			 	 	begin 
+			 	 	writeln ('Enter operands');
+					readln (a,b);
+					writeln ('Result is ',a-b);
+					end;
+				3:
+					begin 
+			 	 	writeln ('Enter operands');
+					readln (a,b);
+					writeln ('Result is ',a*b);
+					end;
+			 	4:
+			 	 	begin 
+			 	 	writeln ('Enter operands');
+					readln (a,b);
+					writeln ('Result is ',a div b);
+					end;
+			 	5:
+			 	 	begin 
+			 	 	writeln ('Enter operands');
+					readln (a,b);
+					writeln ('Result is ',a mod b);
+					end;
+			 	6:
+			 	 	begin 
+			 	 	writeln ('Enter operand');
+					readln (a);
+					writeln ('Result is ',a *a);
+					end;
+			else
+				writeln ('Invalid month');
+			end;
+		readln();
+end.

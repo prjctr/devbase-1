@@ -1,0 +1,40 @@
+program prog5;
+var 
+ month : integer;
+ year : integer;
+Begin
+writeln('Enter month and year');
+readln(month, year);
+	if (month=1) or (month=3) or (month=5)or (month=7)or (month=8)or (month=10)or (month=12) then
+		begin
+		writeln ('on this month 31 days');
+		end;
+	if (month= 4) or (month=6)or (month=9)or (month=11) then 
+		begin
+		writeln ('on this month 30 days');	
+		end;
+	if (month=2) then
+		if (year mod 4)=0 then
+ 		begin
+ 		if (year mod 100)<>0 then
+ 			begin
+ 			writeln ('29');
+ 			end
+ 		else
+			begin
+			if (year mod 400)=0 then
+				begin
+				writeln ('29');
+				end
+			else
+				begin
+				writeln ('28');
+				end;
+			end;
+		end		
+	else
+	begin
+	writeln ('you put wrong month');	
+	end;
+	readln();
+end.

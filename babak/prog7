@@ -1,0 +1,16 @@
+program prog7;
+var
+A: integer;
+Begin
+writeln('Enter your age');
+readln(A);
+ if (A<0) then
+ 	writeln ('in the plans');
+  if (A>=0) and (A<=18) then
+	writeln ('young');
+ if (A>18) and (A<=49) then
+	writeln('young and beautiful');
+ if (A>49) then
+ 	writeln ('old');
+readln();
+end.
