@@ -10,6 +10,7 @@ begin
 	average := 0;
 
 	repeat 
+	begin
 		writeln('Enter the number, please');
 		readln(a);
 
@@ -17,12 +18,12 @@ begin
 		if count = 1 then
 		begin
 			max := a;
+			min := a;
 		end;
 
 		if a > max then
 		begin
 			max := a;
-			min := a;
 		end;
 
 		if (a < min) and (a <> 0) then
@@ -31,7 +32,7 @@ begin
 		end;	
 
 		sum := sum + a;
-
+	end;
 	until a = 0;
 
 	average := sum / count;
