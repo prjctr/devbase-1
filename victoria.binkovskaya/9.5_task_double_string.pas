@@ -9,16 +9,21 @@ begin
 	writeln('Enter the line, please');
 	readln(st);
 
-	i := 1;
-
-	repeat
+	for i := 1 to length(st) do
 	begin
-		insert(st[i], st, i);
-		inc(i, 2);
-	end;	
-	until i > length(st);
+	  	write(st[i]);
+	  	write(st[i]);
+  	end;
 
-	writeln(st);
+  	writeln();
+  	
+	// i := 1;
+	// repeat
+	// begin
+	// 	insert(st[i], st, i);
+	// 	inc(i, 2);
+	// end;	
+	// until i > length(st);
 
 	count := 0;
 
