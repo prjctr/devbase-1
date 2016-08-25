@@ -3,6 +3,7 @@ uses crt;
 
 var 
 	st: String;
+	// newSt: String;
     i, count: Integer;
 
 begin	
@@ -16,6 +17,15 @@ begin
   	end;
 
   	writeln();
+
+  	// _________else_variants________
+
+	// newSt := '';
+	// for i := 1 to length(st) do
+	// begin
+	//       newSt := newSt + st[i] + st[i];
+	// end;
+	// writeln(newSt);
   	
 	// i := 1;
 	// repeat
@@ -24,6 +34,8 @@ begin
 	// 	inc(i, 2);
 	// end;	
 	// until i > length(st);
+
+	// ______end_of_else_variants_____
 
 	count := 0;
 
