@@ -4,7 +4,6 @@ uses uniconsole;
 var
 	height: Integer;
 	time: Integer;
-	equipment: Integer;
 	endurance: Integer;
 
 	food: Integer;
@@ -17,6 +16,61 @@ var
 	umbrella: Integer;
 
 	player: String;
+
+procedure Equip();
+	var
+		i: Integer;
+		equipment: Integer;
+
+	begin
+		for i := 1 to 5 do
+		begin
+			writeln(i, ' предмет');
+			writeln();
+
+			readln(equipment);
+
+			case equipment of
+				1:	
+				begin	
+					food := food + 3;
+				end;	
+				2:
+				begin
+					water := water + 2;
+				end;	
+				3: 
+				begin
+					oxygen := oxygen + 2;
+				end;	
+				4:
+				begin
+					dynamite := dynamite + 1;
+				end;	
+				5:
+				begin
+					rope := rope + 1;
+				end;	
+				6:
+				begin
+					flashlight := flashlight + 1;
+				end;	
+				7:	
+				begin
+					radio := radio + 1;
+				end;	
+				8:
+				begin
+					umbrella := umbrella + 1;		
+				end	
+			else
+				begin
+					writeln(player, ', нет тут такого варианта :Р') ;
+					continue;
+				end;
+			end;
+		end;	
+	end;
 
 procedure WinOrLose(s: String);
 	var
@@ -44,7 +98,7 @@ procedure WinOrLose(s: String);
 	        delay(50);        
 	    end;
 	    writeln;
-	end;	
+	end;		
 
 procedure Meteorite_shower();	
 	var
@@ -129,7 +183,7 @@ procedure Meteorite_shower();
 			end;	
 			2:
 			begin
-				if umbrella = 1 then
+				if umbrella >= 1 then
 				begin
 					time := time + 1;
 					height := height + 1000;
@@ -229,7 +283,7 @@ procedure Map();
 		case choise of	
 			1:
 			begin
-				if flashlight = 1 then
+				if flashlight >= 1 then
 				begin
 					time := time + 1;
 					height := height + 2000; // карта позволила пройти в два раза больше пути за один час
@@ -266,8 +320,8 @@ procedure Map();
 					height := height + 1000;
 					endurance := endurance - 100;
 				end;				
-			end;	
-			else
+			end	
+		else
 			begin
 				writeln(player,' не балуйся, нет здесь такого варианта');
 			end;	
@@ -361,7 +415,7 @@ procedure Cave();
 		case choise of	
 			1:
 			begin
-				if dynamite = 1 then
+				if dynamite >= 1 then
 				begin
 					time := time + 1;
 					height := height + 1000; 
@@ -383,7 +437,7 @@ procedure Cave();
 			end;
 			3:
 			begin
-				if radio = 1 then
+				if radio >= 1 then
 				begin
 					time := time + 1;
 					height := height + 1000; 
@@ -395,7 +449,7 @@ procedure Cave();
 				begin
 					writeln('Ты же подумал: "Ну зачем мне рация? Я же интроверт!"');
 				end;	
-			end;
+			end
 		else
 			begin
 				writeln(player,' не балуйся, нет здесь такого варианта');
@@ -500,7 +554,7 @@ procedure Spiders();
 			end;
 			3:
 			begin
-				if food = 1 then
+				if food >= 1 then
 				begin
 					time := time + 1;
 					height := height + 1000;
@@ -515,7 +569,7 @@ procedure Spiders();
 			end;
 			4:
 			begin
-				if oxygen = 1 then
+				if oxygen >= 1 then
 				begin
 					time := time + 1;
 					height := height + 1000;
@@ -611,7 +665,7 @@ procedure Superman();
 		case choise of	
 			1:
 			begin
-				if oxygen = 1 then
+				if oxygen >= 1 then
 				begin
 					time := time;
 					height := height + 2000;
@@ -627,7 +681,7 @@ procedure Superman();
 			end;
 			2: 
 			begin
-				if water = 1 then
+				if water >= 1 then
 				begin
 					time := time + 1;
 					height := height + 1000;
@@ -643,7 +697,7 @@ procedure Superman();
 			end;
 			3:
 			begin
-				if umbrella = 1 then
+				if umbrella >= 1 then
 				begin
 					writeln('Более грубого обращения с собой Супермен ещё не встречал. Он разозлися не на шутку,');
 					writeln('глаза его налились кровью и, на эмоциях, он схватил тебя и сбросил с обрыва');
@@ -661,7 +715,7 @@ procedure Superman();
 				height := height + 1000;
 				endurance := endurance - 100;
 				writeln('Тююю, почему бы не воспользоваться таким бонусом! Ну ок, иди пешком');
-			end;  
+			end  
 		else
 			begin	
 				writeln(player,' не балуйся, нет здесь такого варианта');
@@ -747,7 +801,7 @@ procedure Yeti(); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		case choise of	
 			1:
 			begin
-				if food = 1 then
+				if food >= 1 then
 				begin
 					time := time + 1;
 					height := height + 1000;
@@ -762,7 +816,7 @@ procedure Yeti(); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			end;
 			2: 
 			begin
-				if rope = 1 then
+				if rope >= 1 then
 				begin
 					rope := rope - 1;
 					writeln(player,' твоя жалкая попытка связать гигантского Йети увенчалась провалом, он разозлися не на шутку и полакомился тобой');
@@ -776,7 +830,7 @@ procedure Yeti(); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			end;
 			3:
 			begin
-				if flashlight = 1 then
+				if flashlight >= 1 then
 				begin
 					time := time + 1;
 					height := height + 1000;
@@ -797,8 +851,7 @@ procedure Yeti(); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				writeln ('его больше, нежели в качестве друга. Он съел тебя без единого зазрения совести.');
 				WinOrLose('YOU HAVE LOST!'); 
 				exit;
-			end;
-
+			end
 		else
 			begin	
 				writeln(player,' не балуйся, нет здесь такого варианта');
@@ -919,7 +972,6 @@ begin
 
 	height := 0; 
 	time := 0;
-	equipment := 0;
 	endurance := 900;
 
 	food := 0;
@@ -931,58 +983,10 @@ begin
 	radio := 0;
 	umbrella := 0;	
 
-	for i := 1 to 5 do
-	begin
-
-		writeln(i, ' предмет');
-		writeln();
-
-		readln(equipment);
-
-		case equipment of
-			1:	
-			begin	
-				food := 1;
-			end;	
-			2:
-			begin
-				water := 1;
-			end;	
-			3: 
-			begin
-				oxygen := 1;
-			end;	
-			4:
-			begin
-				dynamite := 1;
-			end;	
-			5:
-			begin
-				rope := 1;
-			end;	
-			6:
-			begin
-				flashlight := 1;
-			end;	
-			7:	
-			begin
-				radio := 1;
-			end;	
-			8:
-			begin
-				umbrella := 1;		
-			end	
-
-			i := i + 1;	
-		else
-			begin
-				writeln(player, ', нет тут такого варианта :Р') ;
-				continue;
-			end;
-		end;
-	end;		
+	Equip();		
 
 	while (height < 8000) and (time < 12) and (endurance >= 100) do
+
 	begin
 		RandomEvent();
 		writeln('Высота: ', height, 'м');
