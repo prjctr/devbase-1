@@ -16,8 +16,6 @@ var
 	radio: Integer;
 	umbrella: Integer;
 
-	i: Integer;
-
 	player: String;
 
 procedure WinOrLose(s: String);
@@ -973,7 +971,9 @@ begin
 			8:
 			begin
 				umbrella := 1;		
-			end		
+			end	
+
+			i := i + 1;	
 		else
 			begin
 				writeln(player, ', нет тут такого варианта :Р') ;
