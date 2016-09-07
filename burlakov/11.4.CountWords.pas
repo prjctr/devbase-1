@@ -1,4 +1,4 @@
-program reading; {Подсчет слов в файле}
+program CountWords; {Подсчет слов в файле}
 uses sysutils;
 var
 	f: textfile;
@@ -17,29 +17,20 @@ begin
 		for i := 1 to l do
 		begin
 			j := ord(n[i]);
-			if i = l then
-			begin
-				if ((j >= 65) and (j <= 90)) or ((j >= 97) and (j <= 122)) then
-					wrd := wrd + 1
-				else
-					wrd := wrd;	
-			end;
 			if ((j >= 65) and (j <= 90)) or ((j >= 97) and (j <= 122)) then
-			begin
-				wrd := wrd;
-				count := 0;
-			end
+				count := 0
 			else
 			begin
 				if count = 0 then
 				begin
 					wrd := wrd + 1;
-					count := count + 1;
-				end	
-				else
-					wrd := wrd;			
+					count := 1;
+				end;	
 			end;		
 		end;
+		if i = l then
+			if ((j >= 65) and (j <= 90)) or ((j >= 97) and (j <= 122)) then
+				wrd := wrd + 1;
 	end;	
 	close(f);
 	writeln(wrd);

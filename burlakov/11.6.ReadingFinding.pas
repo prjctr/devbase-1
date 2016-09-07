@@ -2,46 +2,56 @@ program read; {Вычитать файл в массив (процедура), �
 uses sysutils;
 const n = 99;
 var
-	f: textfile;
+	//f: textfile;
 	m: array [1..n] of Longint;
 	k: Longint;
 	i: Integer;
-procedure reading;
+procedure reading(fname: string);
 var
+		f: textfile;
 		i: Integer;
 		j: Longint;	
 begin
+	assign(f,'numbers.txt');
+	reset(f);
 	for i :=1 to n do
 	begin
 		readln(f,j);
 		m[i] := j;
-	end;	
+	end;
+	close(f);	
 end;
-function finding (fnd: Longint): String;
+function finding (fnd: Longint): Integer;
 var
-	i: Integer;
+	j,low,high: Integer;
 begin
-	for i := 1 to n do
-	begin
-		if m[i] = k then
+	low := 1;
+	high := length(m);
+	j := 0;
+	repeat
+		j := (high + low) div 2;
+		
+		if (m[j] = k) then break;
+
+		if k < m[j] then
 		begin
-			finding := 'Yes, there is!';
-			break;
+			low := low;
+			high := j-1;
 		end
 		else
 		begin
-			if i = n then
-			finding := 'Not found.'
-			else
-				continue;					
+			low := j+1;
+			high := high;				
 		end;
-	end;	
-end;	
+	until (high < low);
+
+	if (high < low) then
+		finding := -1
+	else	
+		finding := j;
+end;
 begin
-	assign(f,'numbers.txt');
-	reset(f);
-	reading;
-	close(f);
+	reading('numbers.txt');
 	for i := 1 to 5 do
 	begin
 		writeln('Enter number from 31300 to 57800');
