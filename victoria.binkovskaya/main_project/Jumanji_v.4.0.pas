@@ -212,19 +212,21 @@ procedure Chips();
         FillEllipse(chipX, chipY, 10, 10);
 	end;	
 
+// движение фишки по первому пути
 procedure MoveToFirstWay();
 	begin
 		newChipLocation := Locations[chipLocation].nextLocation1; 
     	chipLocation := newChipLocation;
 	end;
 
+// движение фишки по второму пути
 procedure MoveToSecondWay();	
 	begin
-		newChipLocation := Locations[chipLocation].nextLocation2; 
-    	chipLocation := newChipLocation;
+		// newChipLocation := Locations[chipLocation].nextLocation2; 
+  		// chipLocation := newChipLocation;
     	if Locations[chipLocation].nextLocation2 = 0 then
     	begin
-    		newChipLocation := Locations[chipLocation].nextLocation1;
+    		MoveToFirstWay();
     	end;
 	end;	
 
@@ -240,6 +242,55 @@ procedure ChangeFont();
 	  	SetTextStyle(font, HorizDir, FONT_SIZE); 
 	end;		
 
+// рисуем все элементы
+procedure DrawAllElements();
+	begin
+		SetActivePage(activePage);
+    	ClearDevice();
+
+		// инициализация положения игровых ячеек
+		LocationsDescription();
+
+		// основной фон
+		BGround();
+
+		// внутренний фон
+		MField();
+
+		// поле для игральных кубиков
+		DiceField();
+
+		// центральный рисунок игрового поля - подложка для текста
+		CentralEllipse();
+
+		// ячейки игрового поля
+		GameFields();
+
+		// фишки
+        Chips();
+
+        // изменение шрифта
+		ChangeFont();
+
+		// вывод текста о событии
+		WriteText(Locations[1].eventStr);
+
+		// момент перемены картинки на экране
+		SetVisualPage(activePage); 
+		delay(500);	
+
+		// перемена страниц
+		if activePage = 1 then 
+		begin
+			activePage := 0;
+		end	
+		else 
+		begin
+			activePage := 1;
+		end;	
+	end;
+	
+
 // начало основной программы
 begin
 	// инициализация графического режима
@@ -247,21 +298,20 @@ begin
     gm := mMaximized;
     InitGraph(gd,gm, '');	
 
+    // инициализация переменных
     activePage := 0;
     chipLocation := 1;
-
   	key:= 'a';	
 
-
-
+  	// основной игровой цикл
 	while key <> 'q' do
 	begin
-		SetActivePage(activePage);
-    	ClearDevice();
+		// рисуем все элементы
+		DrawAllElements();
 
-    	Chips();
-
+		// считывание клавиши и обрабатывание нажатия
 		key := readkey;
+
 		case key of
 		'w': MoveToFirstWay;
 		'd': MoveToSecondWay;
@@ -278,64 +328,10 @@ begin
 			continue;
 		end;
 
-	// основной фон
-	BGround();
-
-	// внутренний фон
-	MField();
-
-	// поле для игральных кубиков
-	DiceField();
-
-	// центральный рисунок игрового поля - подложка для текста
-	CentralEllipse();
-
-	// ячейки игрового поля
-	GameFields();
-
-	// описание ячеек
-	LocationsDescription();
-
-	ChangeFont();
-	WriteText(Locations[1].eventStr);
-
-	SetVisualPage(activePage);
-	delay(500);
-	
-	// основной фон
-	BGround();
-
-	// внутренний фон
-	MField();
-
-	// поле для игральных кубиков
-	DiceField();
-
-	// центральный рисунок игрового поля - подложка для текста
-	CentralEllipse();
-
-	// ячейки игрового поля
-	GameFields();
-
-	// описание ячеек
-	LocationsDescription();
-
-	ChangeFont();
-	WriteText(Locations[1].eventStr);
-
-	Chips();
-
-	if activePage = 1 then 
-	begin
-		activePage := 0;
-	end	
-	else 
-	begin
-		activePage := 1;
-	end;	
-
 	// конец основной программы
 	end;
+
 	readkey();
+	// закрытие графического режима
 	closeGraph();
 end.
