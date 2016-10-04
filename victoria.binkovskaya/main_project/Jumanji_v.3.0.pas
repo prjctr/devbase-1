@@ -41,6 +41,10 @@ var
 	gm, gd: SmallInt;
 	activePage: Integer;
 
+	// размещение фишки
+	chipLocation: Integer;
+	newChipLocation: Integer;
+
 	Locations: array [1..NUMBER_OF_LOCATIONS] of TLocation;
 
 // фон
@@ -161,56 +165,7 @@ procedure GameFields();
 		end;
 	end;	
 
-// фишки
-procedure Chips();
-	var
-		Color: Longword;
-		i: Integer;
-
-	begin
-		Color := FIRST_CHIP_COLOR;
-		SetColor(Color);
-		SetFillStyle(solidfill, Color);
-		
-		for i := 1 to NUMBER_OF_LOCATIONS do
-		begin
-			Locations[i].x := Locations[i].x + 1;
-			Locations[i].y := Locations[i].y + 1;
-			FillEllipse(Locations[i].x + 15, Locations[i].y + 15, 10, 10);
-		end;	
-
-		// delay(500);
-
-		// SetColor(GAME_FIELDS_COLOR);
-		// SetFillStyle(solidfill, GAME_FIELDS_COLOR);
-		// FillEllipse(65, 675, 10, 10);
-
-		// delay(500);
-
-		// SetColor(Color);
-		// SetFillStyle(solidfill, Color);
-		// FillEllipse(135, 565, 10, 10);
-
-		// Color := SECOND_CHIP_COLOR;
-		// SetColor(Color);
-		// SetFillStyle(solidfill, Color);
-		// FillEllipse(95, 675, 10, 10);
-
-		// ClearChips();
-	end;	
-
-// изменение стандартного шрифта и его размера
-procedure ChangeFont;
-	var 
-		font: Smallint;
-
-	begin
-	  	font := InstallUserFont('Verdana');
-	  	if (font < 0) then 
-	  	Exit;
-	  	SetTextStyle(font, HorizDir, FONT_SIZE); 
-	end;	
-
+// описание ячееек игрового поля
 procedure LocationsDescription();
 	begin
 		Locations[1].x := 50;
@@ -237,6 +192,35 @@ procedure LocationsDescription();
 		Locations[4].y := 560;
 		// Locations[4].nextLocation1 := 1;
 		// Locations[4].nextLocation2 := 0;	
+	end;		
+
+// фишки
+procedure Chips();
+	var
+		Color: Longword;
+		chipX,chipY: Integer;
+
+	begin
+		chipX := Locations[chipLocation].x + 15;
+        chipY := Locations[chipLocation].y + 15;
+
+        Color := FIRST_CHIP_COLOR;
+
+        SetColor(Color);
+        SetFillStyle(solidfill, Color);
+        FillEllipse(chipX, chipY, 10, 10);
+	end;	
+
+// изменение стандартного шрифта и его размера
+procedure ChangeFont;
+	var 
+		font: Smallint;
+
+	begin
+	  	font := InstallUserFont('Verdana');
+	  	if (font < 0) then 
+	  	Exit;
+	  	SetTextStyle(font, HorizDir, FONT_SIZE); 
 	end;	
 
 // начало основной программы
@@ -248,6 +232,7 @@ begin
     InitGraph(gd,gm, '');	
 
     activePage := 0;
+    chipLocation := 1;
 
     while not keypressed do
     begin
@@ -280,7 +265,7 @@ begin
 		Chips();
 
 		SetVisualPage(activePage);
-		delay(40);
+		delay(500);
 		
 		// основной фон
 		BGround();
@@ -305,6 +290,9 @@ begin
 
 		// фишки
 		Chips();
+
+		newChipLocation := Locations[chipLocation].nextLocation1; 
+    	chipLocation := newChipLocation;
 
 		if activePage = 1 then 
 		begin
